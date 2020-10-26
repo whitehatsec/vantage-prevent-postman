@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "edf0df2b-08c7-4299-bfbd-43167a68f745",
 		"name": "API Security Scanner",
+		"description": "= Overview =\n\n\"API Security Scanner\" is Collection template enabling you to automatically test your API for security vulnerabilities from directly within your Postman IDE. The underlying technology powering the \"API Security Scanner\" Collection is Intelligence Directed DAST, also referred to as ID-DAST. ID-DAST is an innovative new product from WhiteHat Security built specifically for modern development ID-DAST is an API first dynamic security scanner founded on the principals of speed, accuracy and easy of use, making it suitable for integration within Postman and Newman CI/CD build pipelines.\n\n= Installation =\n\nID-DAST must be installed and running on your host before you can make use of this Collection. ID-DAST supports the x64 architecture only on Windows, Linux (Ubuntu) and MacOS operating systems. Once installed, ID-DAST will expose a local REST API from which you can initiate scans. Please choose from one of the following methods of installation.\n\n== Docker ==\n\nRun the following commands to run ID-DAST via a Docker Container:\n\n`docker pull whsinnovations/dast-attacker-api:latest`\n`docker run whsinnovations/dast-attacker-api:tagname`\n\nYou can verify the container is up and running by checking if TCP port `27374` is open and ready to accept connections, ex: `netstat -an | grep 27374`\n\n= Utilization =\n\nThe Collection consists of three requests:\n\n1. Submit Scan Request: Enqueue a scan by submitting one or more HTTP Archive (HAR) files to the ID-DAST API\n2. Wait for Scan to Complete: Poll the ID-DAST API until the scan has been completed\n3. Display Scan Results: Graphically render the results of the scan via the Visualize tab.\n\nPerform the following steps to successfully execute this Collection:\n\n1. Verify that the \"apiHost\" collection variable is configured correctly. The default value is \"http://localhost:27374\" and will work with default installations and configurations of the ID-DAST API.\n2. Generate one or more HAR files by interacting with your API and recording the traffic. This can be achieved using [Postman Interceptor|https://www.postman.com/product/postman-interceptor/], [Browsermob Proxy|https://github.com/lightbody/browsermob-proxy], etc.\n3. Select the \"Submit Scan Request\" request and click the \"Body\" tab. Using the parameter name \"hars\", add an individual entry for each HAR file that you want included in the test.\n4. Free versions are limited to scanning localhost applications only. If you are using a paid version and your HAR file references an API hosted somewhere other than localhost, then you'll need to add one or more \"allowedHosts\" parameters. By way of example, if your API is running on the host \"foo.bar.com\", then you'll need to add a parameter called \"allowedHosts\" with a value of \"foo.bar.com\".\n5. Open the Collection Runner and click Run. This will enqueue the scan and poll the scan status until it is marked as complete. You will know the scan is complete when the Collection Runner is complete with all tests passing. Close the Connection Runner once the scan is complete.\n6. Click the \"Display Scan Results\" request and click \"Send\" to obtain the latest copy of the scan results.\n7. From withi nthe \"Display Scan Results\" request, click the \"Visualize\" tab to triage any and all identified vulnerabilities from within a graphical interface.\n\n= Scratchpad =\n\nIntelligence Directed DAST, also referred to as ID DAST, is an innovative new product from WhiteHat Security that embeds dynamic security testing within agile development practices. ID DAST is founded on the principals of speed, accuracy, and ease of use. Within the context of CI/CD, clients can simultaneously prevent known vulnerabilities while rapidly iterating on complex functionality. Essentially, ID DAST increases depth and precision of testing by infusing functional validation with black box testing to make security a feature of quality.\n\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -48,11 +49,6 @@
 							"key": "hars",
 							"type": "file",
 							"src": "/Users/ericsheridan/Development/whitehatsec-innovations/dast-attacker-common/testdata/vuln/sqli/sqli.juiceshop.har"
-						},
-						{
-							"key": "allowedHosts",
-							"value": "localhost",
-							"type": "text"
 						}
 					]
 				},
@@ -571,14 +567,9 @@
 	],
 	"variable": [
 		{
-			"id": "8b5a3404-ff41-4b57-9341-a5e0a1b8ab3e",
+			"id": "1c0efdd2-8c32-4865-bd4d-8975672e0a71",
 			"key": "apiHost",
 			"value": "http://localhost:27374"
-		},
-		{
-			"id": "314d79d5-2297-476e-979e-5130202de80a",
-			"key": "jobID",
-			"value": ""
 		}
 	],
 	"protocolProfileBehavior": {}
