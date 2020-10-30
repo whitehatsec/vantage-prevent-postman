@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "edf0df2b-08c7-4299-bfbd-43167a68f745",
+		"_postman_id": "fcb14503-dd25-46b2-9525-293051708149",
 		"name": "API Security Scanner",
-		"description": "# Overview\n\n\"API Security Scanner\" is Collection enabling you to automatically test your API for security vulnerabilities from directly within your Postman IDE. The underlying technology powering the \"API Security Scanner\" Collection is Intelligence Directed DAST, also referred to as ID-DAST. ID-DAST is an innovative new product from WhiteHat Security built specifically for modern development ID-DAST is an API first dynamic security scanner founded on the principals of speed, accuracy and easy of use, making it suitable for integration within Postman and Newman CI/CD build pipelines.\n\n# Requests\n\nThe Collection consists of three requests:\n\n1. Submit Scan Request: Enqueue a scan by submitting one or more HTTP Archive (HAR) files to the ID-DAST API\n2. Wait for Scan to Complete: Poll the ID-DAST API until the scan has been completed\n3. Display Scan Results: Graphically render the results of the scan via the Visualize tab.\n\n# Installation\n\nID-DAST must be installed and running on your host before you can make use of this Collection. ID-DAST supports the x64 architecture only on Windows, Linux (Ubuntu) and MacOS operating systems. Once installed, ID-DAST will expose a local REST API from which you can initiate scans. Please choose from one of the following methods of installation.\n\n## Docker\n\nYou can download the ID-DAST API Docker container by executing the following command:\n\n```\ndocker pull whsinnovations/dast-attacker-api:latest\n```\n\nYou can run the ID-DAST API Docker container by executing the following command:\n\n```\ndocker run whsinnovations/dast-attacker-api:latest\n```\n\nYou can verify the container is up and running by checking if TCP port `27374` is open and ready to accept connections:\n\n```\nnetstat -an | grep 27374\n```\n\n# Utilization\n\nPerform the following steps to successfully execute this Collection:\n\n1. Verify that the \"apiHost\" collection variable is configured correctly. The default value is \"http://localhost:27374\" and will work with default installations and configurations of the ID-DAST API.\n2. Generate one or more HAR files by interacting with your API and recording the traffic. This can be achieved using [Postman Interceptor](https://www.postman.com/product/postman-interceptor/), [Browsermob Proxy](https://github.com/lightbody/browsermob-proxy), etc.\n3. Select the \"Submit Scan Request\" request and click the \"Body\" tab. Using the parameter name \"hars\", add an individual entry for each HAR file that you want included in the test.\n4. Free versions are limited to scanning localhost applications only. If you are using a paid version and your HAR file references an API hosted somewhere other than localhost, then you'll need to add one or more \"allowedHosts\" parameters. By way of example, if your API is running on the host \"foo.bar.com\", then you'll need to add a parameter called \"allowedHosts\" with a value of \"foo.bar.com\".\n5. Open the Collection Runner and click Run. This will enqueue the scan and poll the scan status until it is marked as complete. You will know the scan is complete when the Collection Runner is finishes with all tests passing. Close the Connection Runner once finished.\n6. Click the \"Display Scan Results\" request and click \"Send\" to obtain the latest copy of the scan results.\n7. From within \"Display Scan Results\", click the \"Visualize\" tab to triage any and all identified vulnerabilities from within a graphical interface.",
+		"description": "# Overview\n\n\"API Security Scanner\" is Collection enabling you to automatically test your API for security vulnerabilities from directly within your Postman IDE. The underlying technology powering the \"API Security Scanner\" Collection is Intelligence Directed DAST, also referred to as ID-DAST. ID-DAST is an innovative new product from WhiteHat Security built specifically for modern development ID-DAST is an API first dynamic security scanner founded on the principals of speed, accuracy and easy of use, making it suitable for integration within Postman and Newman CI/CD build pipelines.\n\n# Requests\n\nThe Collection consists of three requests:\n\n1. Submit Scan Request: Enqueue a scan by submitting one or more HTTP Archive (HAR) files to the ID-DAST API\n2. Wait for Scan to Complete: Poll the ID-DAST API until the scan has been completed\n3. Display Scan Results: Graphically render the results of the scan via the Visualize tab.\n\n# Installation\n\nID-DAST must be installed and running on your host before you can make use of this Collection. ID-DAST supports the x64 architecture only on Windows, Linux (Ubuntu) and MacOS operating systems. Once installed, ID-DAST will expose a local REST API from which you can initiate scans. Please choose from one of the following methods of installation.\n\n## Docker\n\nYou can run the ID-DAST API Docker container by executing the following command:\n\n```\ndocker run -p 27374:27374 whsinnovations/dast-attacker-api:latest\n```\n\nYou can verify the container is up and running by checking if TCP port `27374` is open and ready to accept connections:\n\n```\nnetstat -an | grep 27374\n```\n\n# Utilization\n\nPerform the following steps to successfully execute this Collection:\n\n1. Verify that the \"apiHost\" collection variable is configured correctly. The default value is \"http://localhost:27374\" and will work with default installations and configurations of the ID-DAST API.\n2. Generate one or more HAR files by interacting with your API and recording the traffic. This can be achieved using [Postman Interceptor](https://www.postman.com/product/postman-interceptor/), [Browsermob Proxy](https://github.com/lightbody/browsermob-proxy), etc.\n3. Select the \"Submit Scan Request\" request and click the \"Body\" tab. Using the parameter name \"hars\", add an individual entry for each HAR file that you want included in the test.\n4. Free versions are limited to scanning localhost applications only. If you are using a paid version and your HAR file references an API hosted somewhere other than localhost, then you'll need to add one or more \"allowedHosts\" parameters. By way of example, if your API is running on the host \"foo.bar.com\", then you'll need to add a parameter called \"allowedHosts\" with a value of \"foo.bar.com\".\n5. Open the Collection Runner and click Run. This will enqueue the scan and poll the scan status until it is marked as complete. You will know the scan is complete when the Collection Runner is finishes with all tests passing. Close the Connection Runner once finished.\n6. Click the \"Display Scan Results\" request and click \"Send\" to obtain the latest copy of the scan results.\n7. From within \"Display Scan Results\", click the \"Visualize\" tab to triage any and all identified vulnerabilities from within a graphical interface.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -12,7 +12,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "f0445025-6573-4616-8882-f0562d340f1e",
+						"id": "f03e3de6-21a0-4dc6-8bc9-1d845f20fee5",
 						"exec": [
 							""
 						],
@@ -22,7 +22,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "cec68b12-272e-4b0a-8501-ffea5b82007b",
+						"id": "79f78851-0a86-4f7e-9200-50064f24ca2e",
 						"exec": [
 							"pm.test(\"Status code is 201\", function () {",
 							"    pm.response.to.have.status(201);",
@@ -50,7 +50,10 @@
 							"type": "file",
 							"src": "/Users/ericsheridan/Development/whitehatsec-innovations/dast-attacker-common/testdata/vuln/sqli/sqli.juiceshop.har"
 						}
-					]
+					],
+					"options": {
+						"formdata": {}
+					}
 				},
 				"url": {
 					"raw": "{{apiHost}}/api/v1/scan",
@@ -72,7 +75,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "8059ae9f-3ee9-420d-a2ec-90439150b8ba",
+						"id": "160585dc-9ba1-4f2d-bf5e-c0c34bd89772",
 						"exec": [
 							""
 						],
@@ -82,7 +85,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f7622d1f-bdcc-432a-a39c-7a67cb1a3e8e",
+						"id": "0aad5a53-15ff-46fa-a73e-d9d29a686427",
 						"exec": [
 							"// verify status",
 							"if (pm.response.code != 200) {",
@@ -128,7 +131,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "d6288f89-7e7a-4146-8185-7df566eff0f6",
+						"id": "4553862d-7c86-4e3f-b592-611405aee77a",
 						"exec": [
 							""
 						],
@@ -138,7 +141,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c581266b-535e-409a-a125-ced9c8d71978",
+						"id": "29a39c4f-b641-4b23-846a-c674f532b3f0",
 						"exec": [
 							"// verify status",
 							"if (pm.response.code != 200) {",
@@ -547,7 +550,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "5a165f58-09ae-46bd-91ac-8f6073d9e714",
+				"id": "bfc7a9a6-f303-4dd3-bc79-dcdaa0f43587",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -557,7 +560,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "0389138d-a84d-4700-80a8-104d4575e509",
+				"id": "b57fe0f2-774b-412f-867e-d1ee69c450de",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -567,9 +570,14 @@
 	],
 	"variable": [
 		{
-			"id": "1d3ffbe3-48e0-4e44-9b44-580f6fe0e0dc",
+			"id": "2c53fa30-baa6-49f4-a2ad-2fe0675b1543",
 			"key": "apiHost",
 			"value": "http://localhost:27374"
+		},
+		{
+			"id": "206e10a7-31f2-4a57-b6f2-947a6edd68bf",
+			"key": "jobID",
+			"value": ""
 		}
 	],
 	"protocolProfileBehavior": {}
