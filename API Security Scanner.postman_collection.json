@@ -33,7 +33,7 @@
 							"let jobID = location.substring(index + 1);",
 							"pm.collectionVariables.set(\"jobID\", jobID);",
 							"",
-							"console.log('successfully started scan with jobID: ' + jobID);"
+							"console.log('submit: successfully started scan with jobID: ' + jobID);"
 						],
 						"type": "text/javascript"
 					}
@@ -92,11 +92,22 @@
 							"    throw new Error('invalid response code: ' + pm.response.code);",
 							"}",
 							"",
-							"// verify job is finished",
+							"// wait until job is finished",
 							"let message = pm.response.json();",
 							"let job = message.scanJob;",
-							"if (!job || (job.status != 'succeeded' && job.status != 'failed')) {",
-							"    console.log('retrying due to invalid job value');",
+							"let finished = false;",
+							"",
+							"if (!job) {",
+							"    console.log('poll: job not yet started...');",
+							"} else if (job.status != 'succeeded' && job.status != 'failed') {",
+							"    console.log('poll: job is still running... (vulnerabilities:' + job.vulnerabilities.length + ')');",
+							"} else {",
+							"    finished = true;",
+							"    console.log('poll: scan completed with status of \"' + job.status + '\" (vulnerabilities:' + job.vulnerabilities.length + ')');",
+							"}",
+							"",
+							"// poll if not finished",
+							"if (!finished) {",
 							"    setTimeout(() => {}, 1000);",
 							"    postman.setNextRequest(pm.info.requestId);",
 							"    return;",
@@ -154,6 +165,7 @@
 							"if (!job || (job.status != 'succeeded' && job.status != 'failed')) {",
 							"    throw new Error('bad scan job');",
 							"}",
+							"console.log('results: rendering scan with status of \"' + job.status + '\" (vulnerabilities:' + job.vulnerabilities.length + ')');",
 							"",
 							"// render results",
 							"let template = `<link rel=\"stylesheet\"",
@@ -570,12 +582,12 @@
 	],
 	"variable": [
 		{
-			"id": "d71c31cb-0c0c-4263-9cb1-8066b8c9936a",
+			"id": "c47dfa49-fd9c-463e-8fb3-7188e7d863e5",
 			"key": "apiHost",
 			"value": "http://localhost:27374"
 		},
 		{
-			"id": "a0ee5740-b678-43d4-b083-74aa915cbf8d",
+			"id": "19f8fa2d-ac98-43a3-986d-d79fa3ada77a",
 			"key": "jobID",
 			"value": ""
 		}
