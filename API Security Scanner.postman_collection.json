@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "fcb14503-dd25-46b2-9525-293051708149",
 		"name": "API Security Scanner",
-		"description": "# Overview\n\n\"API Security Scanner\" is Collection enabling you to automatically test your API for security vulnerabilities from directly within your Postman IDE. The underlying technology powering the \"API Security Scanner\" Collection is Intelligence Directed DAST, also referred to as ID-DAST. ID-DAST is an innovative new product from WhiteHat Security built specifically for modern development ID-DAST is an API first dynamic security scanner founded on the principals of speed, accuracy and easy of use, making it suitable for integration within Postman and Newman CI/CD build pipelines.\n\n# Installation\n\nID-DAST must be installed and running on your host before you can make use of this Collection.\n\n## Docker\n\nYou can download run the ID-DAST API Docker container by executing the following command:\n\n```\ndocker run -p 27374:27374 whsinnovations/dast-attacker-api:latest\n```\n\nYou can verify the container is up and running by checking if TCP port `27374` is open and ready to accept connections:\n\n```\nnetstat -an | grep 27374\n```\n\n# Utilization\n\nPerform the following steps to successfully execute this Collection: Record a HAR File, Configure the Scan, Run the Scan, Triage the Results\n\n## Record a HAR File\n\nYou will need to record a HTTP Archive (HAR) file associated with the collection that you wish to test. This can be achieved using technologies such as [Postman Interceptor](https://www.postman.com/product/postman-interceptor/) and [mitmproxy](https://mitmproxy.org/). By way of example, consider the following steps using mitmproxy:\n\n1. Install mitmproxy by following their [instructions](https://docs.mitmproxy.org/stable/overview-installation/).\n1. Download the [har_dump.py](https://github.com/mitmproxy/mitmproxy/blob/master/examples/contrib/har_dump.py) script to your local folder.\n1. Run mitmdump on port 8080 to export the traffic as a HAR file: `mitmdump -s ./har_dump.py —set hardump=./postman.har`\n1. Configure Postman to use a proxy on 127.0.0.1:8080 by following their [instructions](https://learning.postman.com/docs/sending-requests/capturing-request-data/proxy/).\n1. Run your Collection as you normally would. Once finished, stop the `mitmdump` process and note the newly created `postman.har` file.\n\n## Configure the Scan\n\nSelect the \"Submit Scan Request\" request and click the \"Body\" tab. Using the parameter name \"inputFiles\", add an individual entry for each HAR file that you want included in the scan.\n\n## Run the Scan\n\nRun the collection by following the [official Postman documentation](https://learning.postman.com/docs/running-collections/intro-to-collection-runs/). This will enqueue the scan and poll the scan status until it is marked as complete. You will know the scan is complete when the Collection Runner is finishes with all tests passing. Close the Connection Runner once finished.\n\n## Triage the Results\n\nClick the \"Display Scan Results\" request and click \"Send\" to obtain the latest copy of the scan results. From within \"Display Scan Results\", click the \"Visualize\" tab to triage any and all identified vulnerabilities from within a graphical interface.\n\n# FAQ #\n\n## What are the limitations of the 'Free' version?\n\nFree versions are limited to scanning localhost applications only with a limited number of scans per month. You can scan non-localhost applications and increase the number of scans per month by (obtaining a commercial license)[https://www.whitehatsec.com].\n\n## I have a commercial license - how do I scan non-localhost API?\n\nIf you are using a paid version and your HAR file references an API hosted somewhere other than localhost, then you'll need to add one or more \"allowedHosts\" parameters to the body of \"Submit Scan Request\". By way of example, if your API is running on the host \"foo.bar.com\", then you'll need to add a parameter called \"allowedHosts\" with a value of \"foo.bar.com\".\n\n",
+		"description": "# Overview\n\n\"API Security Scanner\" is Collection enabling you to automatically test your API for security vulnerabilities from directly within your Postman IDE. The underlying technology powering the \"API Security Scanner\" Collection is Intelligence Directed DAST, also referred to as ID-DAST. ID-DAST is an innovative new product from WhiteHat Security built specifically for modern development ID-DAST is an API first dynamic security scanner founded on the principals of speed, accuracy and easy of use, making it suitable for integration within Postman and Newman CI/CD build pipelines.\n\n# Installation\n\nID-DAST must be installed and running on your host before you can make use of this Collection.\n\n## Docker\n\nYou can download run the ID-DAST API Linux based Docker container by executing the following command:\n\n```\ndocker run -p 27374:27374 whsinnovations/dast-attacker-api:latest\n```\n\nYou can verify the container is up and running by checking if TCP port `27374` is open and ready to accept connections:\n\n```\nnetstat -an | grep 27374\n```\n\n*Note:* Windows users will need to enable support for Linux containers by following the [official Ubuntu documentation](https://ubuntu.com/tutorials/windows-ubuntu-hyperv-containers).\n\n# Utilization\n\nPerform the following steps to successfully execute this Collection: Record a HAR File, Configure the Scan, Run the Scan, Triage the Results\n\n## Record a HAR File\n\nYou will need to record a HTTP Archive (HAR) file associated with the collection that you wish to test. This can be achieved using technologies such as [Postman Interceptor](https://www.postman.com/product/postman-interceptor/) and [mitmproxy](https://mitmproxy.org/). By way of example, consider the following steps using mitmproxy:\n\n1. Install mitmproxy by following their [instructions](https://docs.mitmproxy.org/stable/overview-installation/).\n1. Download the [har_dump.py](https://github.com/mitmproxy/mitmproxy/blob/master/examples/contrib/har_dump.py) script to your local folder.\n1. Run mitmdump on port 8080 to export the traffic as a HAR file: `mitmdump -s ./har_dump.py —set hardump=./postman.har`\n1. Configure Postman to use a proxy on 127.0.0.1:8080 by following their [instructions](https://learning.postman.com/docs/sending-requests/capturing-request-data/proxy/).\n1. Run your Collection as you normally would. Once finished, stop the `mitmdump` process and note the newly created `postman.har` file.\n\n## Configure the Scan\n\nSelect the \"Submit Scan Request\" request and click the \"Body\" tab. Using the parameter name \"inputFiles\", add an individual entry for each HAR file that you want included in the scan.\n\n## Run the Scan\n\nRun the collection by following the [official Postman documentation](https://learning.postman.com/docs/running-collections/intro-to-collection-runs/). This will enqueue the scan and poll the scan status until it is marked as complete. You will know the scan is complete when the Collection Runner is finishes with all tests passing. Close the Connection Runner once finished.\n\n## Triage the Results\n\nClick the \"Display Scan Results\" request and click \"Send\" to obtain the latest copy of the scan results. From within \"Display Scan Results\", click the \"Visualize\" tab to triage any and all identified vulnerabilities from within a graphical interface.\n\n# FAQ #\n\n## What are the limitations of the 'Free' version?\n\nFree versions are limited to scanning localhost applications only with a limited number of scans per month. You can scan non-localhost applications and increase the number of scans per month by [obtaining a commercial license](https://www.whitehatsec.com).\n\n## How do I configure the hosts that can be scanned?\n\nIf you have a commercial license and your HAR file references an API hosted somewhere other than localhost, then you'll need to add one or more \"allowedHosts\" parameters to the body of \"Submit Scan Request\". By way of example, if your API is running on the host \"foo.bar.com\", then you'll need to add a parameter called \"allowedHosts\" with a value of \"foo.bar.com\".",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -345,9 +345,33 @@
 							"                                aria-labelledby=\"pills-home-tab\">",
 							"                                <div id=\"scan-overview\">",
 							"                                    <dl>",
+							"                                        <dt>Scan Status</dt>",
+							"                                        <dd>",
+							"                                            {{status}}",
+							"                                        </dd>",
+							"                                        {{#if error}}",
+							"                                            <dt>Scan Error</dt>",
+							"                                            <dd>{{error}}</dd>",
+							"                                        {{/if}}",
 							"                                        <dt>Total Vulnerabilities</dt>",
 							"                                        <dd>",
 							"                                            {{vulnerabilities.length}}",
+							"                                        </dd>",
+							"                                        <dt>Allowed Hosts</dt>",
+							"                                        <dd>",
+							"                                            <ul>",
+							"                                                {{#each settings.allowedHosts}}",
+							"                                                    <li>{{this}}</li>",
+							"                                                {{/each}}",
+							"                                            </ul>",
+							"                                        </dd>",
+							"                                        <dt>Input Files</dt>",
+							"                                        <dd>",
+							"                                            <ul>",
+							"                                                {{#each files}}",
+							"                                                    <li>{{this}}</li>",
+							"                                                {{/each}}",
+							"                                            </ul>",
 							"                                        </dd>",
 							"                                    </dl>",
 							"                                </div>",
@@ -582,12 +606,12 @@
 	],
 	"variable": [
 		{
-			"id": "c47dfa49-fd9c-463e-8fb3-7188e7d863e5",
+			"id": "34d6796d-08ea-40d0-9c11-0c1844dbfdae",
 			"key": "apiHost",
 			"value": "http://localhost:27374"
 		},
 		{
-			"id": "19f8fa2d-ac98-43a3-986d-d79fa3ada77a",
+			"id": "9e28937d-f471-4a42-a919-2b89f1896c02",
 			"key": "jobID",
 			"value": ""
 		}

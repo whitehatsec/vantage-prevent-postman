@@ -175,9 +175,33 @@
                                 aria-labelledby="pills-home-tab">
                                 <div id="scan-overview">
                                     <dl>
+                                        <dt>Scan Status</dt>
+                                        <dd>
+                                            {{status}}
+                                        </dd>
+                                        {{#if error}}
+                                            <dt>Scan Error</dt>
+                                            <dd>{{error}}</dd>
+                                        {{/if}}
                                         <dt>Total Vulnerabilities</dt>
                                         <dd>
                                             {{vulnerabilities.length}}
+                                        </dd>
+                                        <dt>Allowed Hosts</dt>
+                                        <dd>
+                                            <ul>
+                                                {{#each settings.allowedHosts}}
+                                                    <li>{{this}}</li>
+                                                {{/each}}
+                                            </ul>
+                                        </dd>
+                                        <dt>Input Files</dt>
+                                        <dd>
+                                            <ul>
+                                                {{#each files}}
+                                                    <li>{{this}}</li>
+                                                {{/each}}
+                                            </ul>
                                         </dd>
                                     </dl>
                                 </div>
