@@ -365,14 +365,6 @@
 							"                                                {{/each}}",
 							"                                            </ul>",
 							"                                        </dd>",
-							"                                        <dt>Input Files</dt>",
-							"                                        <dd>",
-							"                                            <ul>",
-							"                                                {{#each files}}",
-							"                                                    <li>{{this}}</li>",
-							"                                                {{/each}}",
-							"                                            </ul>",
-							"                                        </dd>",
 							"                                    </dl>",
 							"                                </div>",
 							"                            </div>",
@@ -555,7 +547,7 @@
 							"            'order': [[0, 'desc']]",
 							"        });",
 							"    });",
-							"</script>`",
+							"</script>`;",
 							"",
 							"pm.visualizer.set(template, job);"
 						],
@@ -606,12 +598,12 @@
 	],
 	"variable": [
 		{
-			"id": "34d6796d-08ea-40d0-9c11-0c1844dbfdae",
+			"id": "359cb5cf-59ca-4549-8c9c-f9fe46d043e8",
 			"key": "apiHost",
 			"value": "http://localhost:27374"
 		},
 		{
-			"id": "9e28937d-f471-4a42-a919-2b89f1896c02",
+			"id": "79a8a8ff-4e6f-4d74-88d4-e542599b97ad",
 			"key": "jobID",
 			"value": ""
 		}
