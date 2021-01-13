@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "9a643525-32c4-4904-af78-9fbfe52c95cb",
+		"_postman_id": "3b0cc72a-13a8-4e0c-ada8-97dc75cbf11b",
 		"name": "API Security Scanner",
-		"description": "# Overview\n\n\"API Security Scanner\" is Collection enabling you to automatically test your API for security vulnerabilities from directly within your Postman IDE using WhiteHat Security's [Intelligent Directed DAST (ID-DAST)](https://www.whitehatsec.com).\n\n# Installation\n\nID-DAST must be installed and running on your host before you can make use of this Collection.\n\n## Docker\n\nYou can download and run the ID-DAST API Linux based Docker container by executing the following commands:\n\n```\n$> docker pull whsinnovations/dast-attacker-api:latest\n$> docker run -p 27374:27374 whsinnovations/dast-attacker-api:latest\n```\n\nYou can verify the container is up and running by checking if TCP port `27374` is open and ready to accept connections:\n\n```\n$> netstat -an | grep 27374\n```\n\n*Note:* Windows users will need to enable support for Linux containers by following the [official Ubuntu documentation](https://ubuntu.com/tutorials/windows-ubuntu-hyperv-containers).\n\n# Utilization\n\nPerform the following steps to successfully execute this Collection: Export the Collection, Configure the Scan, Run the Scan, Triage the Results\n\n## Export the Collection\n\nExport the Collection you wish to test by following the [official Postman documentation](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#exporting-collections). Any format explicitly supported by Postman is inheritly supported by the \"API Security Scanner\". If your Collection makes use of Environment variables, then you will need to export these as well by following the [official Postman documentation](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#exporting-environments).\n\n## Configure the Scan\n\nSelect the \"Submit Scan Job\" request and click the \"Body\" tab. Using the parameter name \"inputFiles\", add an individual entry for each Collection and Environment file that you want included in the scan. Click \"Save\" to ensure your changes are applied.\n\n## Run the Scan\n\nRun the collection by following the [official Postman documentation](https://learning.postman.com/docs/running-collections/intro-to-collection-runs/). This will enqueue the scan and poll the scan status until it is marked as complete. You will know the scan is complete when the Collection Runner is finished with all tests passing. Close the Connection Runner once finished.\n\n## Triage the Results\n\nClick the \"Display Scan Results\" request and click \"Send\" to obtain the latest copy of the scan results. From within \"Display Scan Results\", click the \"Visualize\" tab to triage any and all identified vulnerabilities from within Postman.\n\n# Known Issues\n\n- Postman does not natively export to HAR file format: [see #9242](https://github.com/postmanlabs/postman-app-support/issues/9242)\n- Visualizer does not correctly render `select` options: [see #9187](https://github.com/postmanlabs/postman-app-support/issues/9187)\n- Visualizer does not support playing embedded videos: [see #9243](https://github.com/postmanlabs/postman-app-support/issues/9243)\n\n# FAQ #\n\n## What are the limitations of the 'Free' version?\n\nFree versions are limited to scanning localhost applications only with a limited number of scans per month. You can scan non-localhost applications and increase the number of scans per month by [obtaining a commercial license](https://www.whitehatsec.com).\n\n## How do I configure the hosts that can be scanned?\n\nIf you have a commercial license and your HAR file references an API hosted somewhere other than localhost, then you'll need to add one or more \"allowedHosts\" parameters to the body of \"Submit Scan Request\". By way of example, if your API is running on the host \"foo.bar.com\", then you'll need to add a parameter called \"allowedHosts\" with a value of \"foo.bar.com\".\n\n## I attempted to run the Collection but got a CONNECTION REFUSED error - what's up?\n\nMake sure you disabled the proxy configuration that you used to generate a HAR file in the `Record a HAR File` step before moving onto the `Configure the Scan` step. Also verify that the ID-DAST API and the API you are testing are up and running.\n\n## I am getting errors when Postman attempts to open local files - what's up?\n\nYou'll need to configure the working directory within Postman as described in the [Getting Started](https://learning.postman.com/docs/getting-started/settings/) documentation.",
+		"description": "# Overview\n\n\"API Security Scanner\" is Collection enabling you to automatically test your API for security vulnerabilities from directly within your Postman IDE using WhiteHat Security's [Intelligent Directed DAST (ID-DAST)](https://www.whitehatsec.com).\n\n# Installation\n\nID-DAST must be installed and running on your host before you can make use of this Collection.\n\n## Docker\n\nYou can download and run the ID-DAST API Linux based Docker container by executing the following commands:\n\n```\n$> docker pull whsinnovations/dast-attacker-api:latest\n$> docker run -p 27374:27374 whsinnovations/dast-attacker-api:latest\n```\n\nYou can verify the container is up and running by checking if TCP port `27374` is open and ready to accept connections:\n\n```\n$> netstat -an | grep 27374\n```\n\n*Note:* Windows users will need to enable support for Linux containers by following the [official Ubuntu documentation](https://ubuntu.com/tutorials/windows-ubuntu-hyperv-containers).\n\n# Utilization\n\nPerform the following steps to successfully execute this Collection: Export the Collection, Configure the Scan, Run the Scan, Triage the Results\n\n## Export the Collection\n\nExport the Collection you wish to test by following the [official Postman documentation](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#exporting-collections). Any format explicitly supported by Postman is inheritly supported by the \"API Security Scanner\". If your Collection makes use of Environment variables, then you will need to export these as well by following the [official Postman documentation](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#exporting-environments).\n\n## Configure the Scan\n\nSelect the \"Submit Scan Job\" request and click the \"Body\" tab. Using the parameter name \"inputFiles\", add an individual entry for each Collection and Environment file that you want included in the scan. Click the \"Headers\" tab and set the value of the \"X-WhiteHat-License-Key\" header to that of your license key. Once these steps are completed, click \"Save\" to ensure your changes are applied.\n\n## Run the Scan\n\nRun the collection by following the [official Postman documentation](https://learning.postman.com/docs/running-collections/intro-to-collection-runs/). This will enqueue the scan and poll the scan status until it is marked as complete. You will know the scan is complete when the Collection Runner is finished with all tests passing. Close the Connection Runner once finished.\n\n## Triage the Results\n\nClick the \"Display Scan Results\" request and click \"Send\" to obtain the latest copy of the scan results. From within \"Display Scan Results\", click the \"Visualize\" tab to triage any and all identified vulnerabilities from within Postman.\n\n# Known Issues\n\n- Postman does not natively export to HAR file format: [see #9242](https://github.com/postmanlabs/postman-app-support/issues/9242)\n- Visualizer does not correctly render `select` options: [see #9187](https://github.com/postmanlabs/postman-app-support/issues/9187)\n- Visualizer does not support playing embedded videos: [see #9243](https://github.com/postmanlabs/postman-app-support/issues/9243)\n\n# FAQ #\n\n## What are the limitations of the 'Free' version?\n\nFree versions are limited to scanning for SQL Injection only with a limited number of scans per month. You can scan for other vulnerabilities and increase the number of scans per month by [obtaining a commercial license](https://www.whitehatsec.com).\n\n## How do I configure the hosts that can be scanned?\n\nIf you have a commercial license and your HAR file references an API hosted somewhere other than localhost, then you'll need to add one or more \"allowedHosts\" parameters to the body of \"Submit Scan Request\". By way of example, if your API is running on the host \"foo.bar.com\", then you'll need to add a parameter called \"allowedHosts\" with a value of \"foo.bar.com\".\n\n## I attempted to run the Collection but got a CONNECTION REFUSED error - what's up?\n\nMake sure you disabled the proxy configuration that you used to generate a HAR file in the `Record a HAR File` step before moving onto the `Configure the Scan` step. Also verify that the ID-DAST API and the API you are testing are up and running.\n\n## I am getting errors when Postman attempts to open local files - what's up?\n\nYou'll need to configure the working directory within Postman as described in the [Getting Started](https://learning.postman.com/docs/getting-started/settings/) documentation.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -12,7 +12,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "ca880242-1d73-47ac-9abb-2b20e8f59399",
 						"exec": [
 							""
 						],
@@ -22,7 +21,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "849cd3d2-9beb-4196-990d-c2572a2e20da",
 						"exec": [
 							"pm.test(\"Status code is 201\", function () {",
 							"    pm.response.to.have.status(201);",
@@ -41,7 +39,13 @@
 			],
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "X-WhiteHat-License-Key",
+						"value": "place your license key here",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "formdata",
 					"formdata": [
@@ -50,10 +54,7 @@
 							"type": "file",
 							"src": "Desktop/JuiceShop - Search.postman_collection.json"
 						}
-					],
-					"options": {
-						"formdata": {}
-					}
+					]
 				},
 				"url": {
 					"raw": "{{apiHost}}/api/v1/scan",
@@ -75,7 +76,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "e64bf307-93b5-46da-8337-25da719a9c36",
 						"exec": [
 							""
 						],
@@ -85,7 +85,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "2e773224-6f0c-41c9-91ae-6dbde269bf3a",
 						"exec": [
 							"// verify status",
 							"if (pm.response.code != 200) {",
@@ -104,7 +103,13 @@
 							"    console.log('poll: job is still running... (vulnerabilities:' + vulnerabilities + ')');",
 							"} else {",
 							"    finished = true;",
-							"    console.log('poll: scan completed with status of \"' + job.status + '\" (vulnerabilities:' + job.scan.vulnerabilities.length + ')');",
+							"",
+							"    let vulnerabilities = job.scan.vulnerabilities ? job.scan.vulnerabilities.length : 0;",
+							"    console.log('poll: scan completed with status of \"' + job.status + '\" (vulnerabilities:' + vulnerabilities + ')');",
+							"",
+							"    if (job.error) {",
+							"        throw new Error('scan job failed: ' + job.error);",
+							"    }",
 							"}",
 							"",
 							"// poll if not finished",
@@ -143,7 +148,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "b60e4ab3-7dd7-4138-bcd9-522c0914c14e",
 						"exec": [
 							"// verify status",
 							"if (pm.response.code != 200) {",
@@ -153,9 +157,15 @@
 							"// verify job is finished",
 							"let message = pm.response.json();",
 							"let job = message.scanJob;",
-							"if (!job || (job.status != 'succeeded' && job.status != 'failed')) {",
-							"    throw new Error('bad scan job');",
+							"if (!job) {",
+							"    throw new Error('scan job is undefined');",
+							"} else if (job.status != 'succeeded' && job.status != 'failed') {",
+							"    throw new Error('scan job has unexpected status of \"' + job.status + '\"');",
 							"}",
+							"if (job.error) {",
+							"    throw new Error('scan job failed: ' + job.error);",
+							"}",
+							"",
 							"console.log('results: rendering scan with status of \"' + job.status + '\" (vulnerabilities:' + job.scan.vulnerabilities.length + ')');",
 							"",
 							"// render results",
@@ -176,7 +186,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "3343c724-02f0-4891-8724-9ffe634fc3d4",
 						"exec": [
 							""
 						],
@@ -207,7 +216,6 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "aee3e69b-8240-4a29-a59d-85c7d7404915",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -217,7 +225,6 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "accd93bd-90d5-486d-9e9a-a39bb8577561",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -227,15 +234,12 @@
 	],
 	"variable": [
 		{
-			"id": "a418ab2a-449b-4535-a489-baf477f527c5",
 			"key": "apiHost",
 			"value": "http://localhost:27374"
 		},
 		{
-			"id": "0d632b2b-e5f6-49ee-8168-da26b230c23b",
 			"key": "jobID",
 			"value": ""
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
