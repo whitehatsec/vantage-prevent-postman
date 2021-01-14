@@ -22,16 +22,24 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 201\", function () {",
-							"    pm.response.to.have.status(201);",
-							"});",
+							"if (pm.response.code !== 201) {",
+							"    throw new Error('unexpected status code (' + pm.response.code + '): ensure the container is running and your \"Body\" configuration is correct');",
+							"}",
 							"",
 							"let location = pm.response.headers.get(\"Location\");",
+							"if (!location || location == '') {",
+							"    throw new Error('scan submission failed: no job was created - location header missing');",
+							"}",
+							"",
 							"let index = location.lastIndexOf(\"/\");",
 							"let jobID = location.substring(index + 1);",
 							"pm.collectionVariables.set(\"jobID\", jobID);",
 							"",
-							"console.log('submit: successfully started scan with jobID: ' + jobID);"
+							"console.log('submit: successfully started scan with jobID: ' + jobID);",
+							"",
+							"pm.test(\"successfully submitted scan job\", function() {",
+							"    pm.response.to.have.status(201);",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -52,7 +60,7 @@
 						{
 							"key": "inputFiles",
 							"type": "file",
-							"src": "Desktop/JuiceShop - Search.postman_collection.json"
+							"src": "Development/whitehatsec-innovations/dast-attacker-api/test/JuiceShop - Search.postman_collection.json"
 						}
 					]
 				},
@@ -71,7 +79,7 @@
 			"response": []
 		},
 		{
-			"name": "Wait for Scan to Complete",
+			"name": "Get Scan Status",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -118,6 +126,10 @@
 							"    postman.setNextRequest(pm.info.requestId);",
 							"    return;",
 							"}",
+							"",
+							"pm.test(\"successfully obtained scan status\", function() {",
+							"    pm.response.to.have.status(200);",
+							"});",
 							""
 						],
 						"type": "text/javascript"
@@ -178,7 +190,11 @@
 							"</script>",
 							"`;",
 							"",
-							"pm.visualizer.set(template, job);"
+							"pm.visualizer.set(template, job);",
+							"",
+							"pm.test('successfully displayed scan results: head over to the \"Visualize\" tab under \"Body\" to triage the results', function() {",
+							"    pm.response.to.have.status(200);",
+							"});"
 						],
 						"type": "text/javascript"
 					}
