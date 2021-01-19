@@ -51,7 +51,8 @@
 					{
 						"key": "X-WhiteHat-License-Key",
 						"value": "place your license key here",
-						"type": "text"
+						"type": "text",
+						"description": "IDD license key is required for scanning"
 					}
 				],
 				"body": {
@@ -59,8 +60,15 @@
 					"formdata": [
 						{
 							"key": "inputFiles",
+							"description": "Postman collection v2.1",
 							"type": "file",
-							"src": "Development/whitehatsec-innovations/dast-attacker-common/testdata/api/Petstore.postman_collection.json"
+							"src": []
+						},
+						{
+							"key": "acceptEULA",
+							"value": "",
+							"description": "Accept EULA must be set to 'Yes'. ",
+							"type": "text"
 						}
 					]
 				},
