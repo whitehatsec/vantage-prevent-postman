@@ -115,7 +115,7 @@
 							"if (!job) {",
 							"    console.log('poll: job not yet started...');",
 							"} else if (job.status != 'succeeded' && job.status != 'failed') {",
-							"    let vulnerabilities = job.scan.vulnerabilities ? job.scan.vulnerabilities.length : 0;",
+							"    let vulnerabilities = job.scan && job.scan.vulnerabilities ? job.scan.vulnerabilities.length : 0;",
 							"    console.log('poll: job is still running... (vulnerabilities:' + vulnerabilities + ')');",
 							"} else {",
 							"    finished = true;",
@@ -144,9 +144,16 @@
 					}
 				}
 			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
 				"url": {
 					"raw": "{{apiHost}}/api/v1/scan/{{jobID}}",
 					"host": [
