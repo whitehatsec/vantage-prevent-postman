@@ -1,3 +1,5 @@
+# API Security Tester
+
 WhiteHat’s API Security Tester is a collection enabling you to automatically test your API's for security vulnerabilities directly within your Postman IDE using WhiteHat Security's Intelligence-Directed DAST (ID-DAST). ID-DAST tests for the [OWASP Top 10 for APIs](https://owasp.org/www-project-api-security/) as well as the [OWASP Top 10 for Web Applications](https://owasp.org/www-project-top-ten/).
 
 ## Initialize with Docker
