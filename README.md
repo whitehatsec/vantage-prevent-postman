@@ -2,6 +2,8 @@
 
 WhiteHat’s API Security Tester is a collection enabling you to automatically test your API's for security vulnerabilities directly within your Postman IDE using WhiteHat Security's Intelligence-Directed DAST (ID-DAST). ID-DAST tests for the [OWASP Top 10 for APIs](https://owasp.org/www-project-api-security/) as well as the [OWASP Top 10 for Web Applications](https://owasp.org/www-project-top-ten/).
 
+Use of this collection and associated works are subject to the terms and conditions of the [End User License Agreement](https://www.whitehatsec.com/terms-conditions/eula-postman/).
+
 ## Initialize with Docker
 ID-DAST utilizes a Docker container to perform the vulnerability scanning. Running this container requires you to accept the [End User License Agreement](https://www.whitehatsec.com/terms-conditions/eula-postman/) by setting the _WHITEHAT_ACCEPT_EULA_ environment variable to 'y'. Pull and run the container with accepted EULA by executing the following commands:
 
