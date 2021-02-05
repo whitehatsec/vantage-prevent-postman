@@ -28,7 +28,8 @@ Within the "Submit Scan Job" POST request of the WHS "API Security Tester" colle
 2)	Now select the "Headers" tab and set the value of the "X-WhiteHat-License-Key" to that of your license key. 
 3)	And finally, the most important step, click "Save" to ensure your changes are applied.
 
-_Note_: The “allowedHosts” parameter specifies the hosts that are allowed to be scanned and is to ensure you do not scan an endpoint that is not intended to be attacked, e.g.: localhost, https://www.example.com, www.example.com.
+_Note_: The “allowedHosts” parameter specifies the hosts that are allowed to be scanned, e.g.: localhost, https://www.example.com, www.example.com.
+Review this parameter to ensure you do not scan an endpoint that is not intended to be attacked.
 
 ## Run the WHS Tester Collection
 Run the API Security Tester collection by using a "Collection Runner". This can easily be done with the blue “Run” button at the top of the Tester collection leaflet. It should open a new "Collection Runner" window. Click "Run" button again. This will kick off the scan and poll the status until complete. You will know the scan is complete when the Collection Runner is finished with all tests passing. For more information on Collection Runners, please follow the [official Postman documentation](https://learning.postman.com/docs/running-collections/intro-to-collection-runs/). 
