@@ -6,6 +6,7 @@ WhiteHat’s [API Security Tester](https://www.postman.com/whitehatsec-innovatio
 1) Postman IDE and Docker is installed, up, and running
 2) The API/application that you wish to test against is live (e.g.: JuiceShop or TiredfulAPI)
 3) And the associated API collection you wish to test  
+4) Watch Postman [Hackathon demo](https://youtu.be/9wQRr1lMdTU)
 
 ## Initialize with Docker
 ID-DAST utilizes a Docker container to perform the vulnerability scanning. Running this container requires you to accept the [End User License Agreement](https://www.whitehatsec.com/terms-conditions/eula-postman/) by setting the _WHITEHAT_ACCEPT_EULA_ environment variable to 'y'. Pull and run the container with accepted EULA by executing the following commands:
