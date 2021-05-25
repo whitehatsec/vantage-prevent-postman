@@ -1,0 +1,287 @@
+{
+	"info": {
+		"_postman_id": "07fd294a-b3bb-4168-bbe2-4c669cdcb048",
+		"name": "API Security Tester",
+		"description": "# Overview\nWhiteHat’s [API Security Tester](https://www.postman.com/whitehatsec-innovations/workspace/api-security-tester/overview) is a collection enabling you to automatically test your API's for security vulnerabilities directly within your Postman IDE using WhiteHat Security's Intelligence-Directed DAST (ID-DAST). ID-DAST tests for the [OWASP Top 10 for APIs](https://owasp.org/www-project-api-security/) as well as the [OWASP Top 10 for Web Applications](https://owasp.org/www-project-top-ten/).\n\n# License\nID-DAST requires a license to perform security testing. [Click here](https://www.whitehatsec.com/postman-galaxy-2021) and complete the form to obtain a free tiral license.\n\n# Demo\n[Click here](https://www.youtube.com/watch?v=k2GuK_mVboo) to watch a demonstration of how to use this workspace and collection.\n\n# Setup\n## Docker\nID-DAST utilizes a Docker container to perform the vulnerability scanning. Running this container requires you to accept the [End User License Agreement](https://www.whitehatsec.com/terms-conditions/eula-postman/) by setting the `WHITEHAT_ACCEPT_EULA` environment variable equal to `y`. Pull and Run the container with the accepted EULA option by executing the following commands:\n\n```\n$> docker pull whsinnovations/dast-attacker-api:latest\n$> docker run -it --rm -p 27374:27374 -e WHITEHAT_ACCEPT_EULA=y whsinnovations/dast-attacker-api:latest\n```\n*Note:* Windows users will need to enable support for Linux containers by following the [official Windows documentation](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-10-linux).\n\n*Note:* Make sure to allocate enough ram to docker to run IDD as well as any other containers you may have running.  We recommend a minimum of 4 gig of ram.\n\n# Usage\nPerform the following steps to run a vulnerability scan on your API:\n\n## Export Your Collection\nExport the collection you wish to test by right clicking on the collection and selecting \"Export\". Choose \"Collection v2.1\" and save it to Postman's working directory. The working directory is specified within Postman preferences as described in the [Getting Started](https://learning.postman.com/docs/getting-started/settings/#working-directory) documentation. \n\n## Configure Your Scan\nIn the API Security Scanner collection, select the \"Submit Scan Job\" function and select the \"Body\" tab. Using the parameter name \"collectionFile\", click \"Select Files\" and browse to the collection you exported.\n\nThe \"allowedHosts\" parameter specifies the hosts that are allowed to be scanned. This is to ensure you do not scan an endpoint that is not intended to be attacked. Examples include: localhost, https://www.example.com, www.example.com.\n\nYou may optionally select an environment file that goes with your collection\n\n![Scan Job](https://github.com/whitehatsec-innovations/dast-postman-resources/blob/master/images/submitscanjob.png?raw=true)\n\n## Run the Scan\n\nRun the collection by using the \"Collection Runner\" on the API Security Tester collection.\n![Collection Runner](https://github.com/whitehatsec-innovations/dast-postman-resources/blob/master/images/runner.png?raw=true)\n\nThis will start the scan and poll the status until it is marked as complete. \n![Scan Complete](https://github.com/whitehatsec-innovations/dast-postman-resources/blob/master/images/scancomplete.png?raw=true)\n\n## View the Results\n\nClose the Connection Runner and click the \"Display Scan Results\" function. Click \"Send\" to obtain the latest copy of the scan results. From within the \"Body\" tab, click the \"Visualize\" tab to view discovered vulnerabilities within your API.\n![View Results](https://github.com/whitehatsec-innovations/dast-postman-resources/blob/master/images/scanresults.png?raw=true)\n\n # FAQ #\n## How can I get help?\nYou can log issues or feature request on our [Github](https://github.com/whitehatsec-innovations/dast-postman-resources/issues) page.\n\n## Should I test production servers? \nIDD will test methods such as POST and DELETE which can modify data in your applications database.  Take precautions if you are testing your production server for vulnerabilities. \n\n## I get a license verification error - what should I do?\nID-DAST requires a license to perform security testing. [Click here](https://www.whitehatsec.com/postman-galaxy-2021) and complete the form to obtain your FREE license.\n\n## I attempted to run the Collection but got a CONNECTION REFUSED error - what's up?\nVerify that the ID-DAST API and the API you are testing are up and running as this is usually the result of ID-DAST not being able to connect to your API.  Also be sure you have enough ram allocated to docker for running IDD.  \n\n## More information\nFor a detailed set up guide, visit our Resource page on GitHub: [CLICK HERE](https://github.com/whitehatsec-innovations/dast-postman-resources/blob/master/README.md)\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Submit Scan Job",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code !== 201) {",
+							"    let message = pm.response.json();",
+							"    throw new Error('an error has occured (' + pm.response.code + '): ' + message.message); ",
+							"}",
+							"",
+							"let location = pm.response.headers.get(\"Location\");",
+							"if (!location || location == '') {",
+							"    throw new Error('scan submission failed: no job was created - location header missing');",
+							"}",
+							"",
+							"let index = location.lastIndexOf(\"/\");",
+							"let jobID = location.substring(index + 1);",
+							"pm.collectionVariables.set(\"jobID\", jobID);",
+							"",
+							"console.log('submit: successfully started scan with jobID: ' + jobID);",
+							"",
+							"pm.test(\"successfully submitted scan job\", function() {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "license key is required for security scanning",
+						"key": "X-WhiteHat-License-Key",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "collectionFile",
+							"description": "Postman collection referencing the API you wish to test",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "allowedHosts",
+							"value": "localhost",
+							"description": "Specifies the host to be scanned. eg: localhost, https://www.example.com",
+							"type": "text"
+						},
+						{
+							"key": "environmentFile",
+							"description": "(optional) Postman evironment file",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "{{apiHost}}/api/v1/scan",
+					"host": [
+						"{{apiHost}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"scan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Scan Status",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// verify status",
+							"if (pm.response.code != 200) {",
+							"    let message = pm.response.json();",
+							"    throw new Error('an error has occured (' + pm.response.code + '): ' + message.message); ",
+							"}",
+							"",
+							"// wait until job is finished",
+							"let job = pm.response.json();",
+							"let finished = false;",
+							"",
+							"if (!job) {",
+							"    console.log('poll: job not yet started...');",
+							"} else if (job.status != 'succeeded' && job.status != 'failed') {",
+							"    let vulnerabilities = job.vulnCount;",
+							"    ",
+							"    let message = 'scan in progress... (vulnerabilities:' + vulnerabilities + ')';",
+							"    pm.test(message, function() {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"} else {",
+							"    finished = true;",
+							"",
+							"    let vulnerabilities = job.vulnCount;",
+							"",
+							"    if (job.error) {",
+							"        throw new Error('scan job failed: ' + job.error);",
+							"    }",
+							"}",
+							"",
+							"// poll if not finished",
+							"if (!finished) {",
+							"    setTimeout(() => {}, 3000);",
+							"    postman.setNextRequest(pm.info.requestId);",
+							"    return;",
+							"}",
+							"",
+							"pm.test(\"scan is complete with \" + job.vulnCount + \" vulnerabilities\", function() {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{apiHost}}/api/v1/scan/{{jobID}}",
+					"host": [
+						"{{apiHost}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"scan",
+						"{{jobID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Display Scan Results",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// verify status",
+							"if (pm.response.code != 200) {",
+							"    let message = pm.response.json();",
+							"    throw new Error('an error has occured (' + pm.response.code + '): ' + message.message); ",
+							"}",
+							"",
+							"// verify job is finished",
+							"let job = pm.response.json();",
+							"",
+							"if (!job) {",
+							"    throw new Error('scan job is undefined');",
+							"} else if (job.status != 'succeeded' && job.status != 'failed') {",
+							"    throw new Error('scan job has unexpected status of \"' + job.status + '\"');",
+							"}",
+							"if (job.error) {",
+							"    throw new Error('scan job failed: ' + job.error);",
+							"}",
+							"",
+							"console.log('results: rendering scan with status of \"' + job.status + '\" (vulnerabilities:' + job.vulnCount + ')');",
+							"",
+							"// render results",
+							"let apiHost = pm.variables.get(\"apiHost\");",
+							"let jobID = job.id;",
+							"",
+							"let template = `",
+							"<script>",
+							"    window.location.href='${apiHost}/api/v1/report/postman?scanID=${jobID}';",
+							"</script>",
+							"`;",
+							"",
+							"pm.visualizer.set(template, job);",
+							"",
+							"pm.test('scan results ready. go to \"Diplay Scan Results\" and \"Send\" to load the results.  Use the \"Visualize\" feature in the response body to see the report', function() {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{apiHost}}/api/v1/scan/{{jobID}}",
+					"host": [
+						"{{apiHost}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"scan",
+						"{{jobID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apiHost",
+			"value": "http://localhost:27374"
+		},
+		{
+			"key": "jobID",
+			"value": ""
+		}
+	]
+}
