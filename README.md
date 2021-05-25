@@ -1,3 +1,7 @@
+# API Security Tester
+
+Providing a Collection powered by WhiteHat Security designed to enable the secure development of APIs throughout the Postman lifecycle.
+
 ## The Problem
 
 Security testing is a cornerstone of API Lifecycle Management. Yet, traditional security testing technologies are struggling to adapt to the design and architectural characteristics of APIs. The result? Most API development teams are waiting days or weeks for results, perform their security testing manually, or perform no security testing at all.
