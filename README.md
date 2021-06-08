@@ -30,16 +30,16 @@ While technically we're supposed to say "we are the 'Innovation Team' within Whi
 
 You can report any and all issues you encounter using [Issues on GitHub](https://github.com/whitehatsec-innovations/dast-postman-resources/issues).
 
-## Upcoming Events
+## Past Events
 
-### WEBINAR ON MAY 6TH: BLUEPRINT FOR GOVERNANCE: INTEGRATING SECURITY TESTING WITHIN POSTMAN
+### WEBINAR ON MAY 6, 2021: BLUEPRINT FOR GOVERNANCE: INTEGRATING SECURITY TESTING WITHIN POSTMAN
 
 Join Eric Sheridan (Chief Scientist at WhiteHat Security) and Kin Lane (Chief Evangelist at Postman) in this live webinar on Thursday, May 6 and learn the “must-haves” of API security testing within your overall governance strategy. In addition, we will put theory into practice with a demonstration of how to achieve fast, easy, accurate and scalable security testing of your APIs. [Register today!](https://info.whitehatsec.com/0521-WebinarWH-IntegrateAPITestingPostman.html)
 
-### POSTMAN HACKATHON: MON, JAN 25
-
-We are pleased to announce the API Security Tester has been submitted to the [Postman Hackathon](https://www.postman.com/postman-galaxy/postman-api-hack/) as of January 25th.
-
-### POSTMAN GALAXY: THURS, FEB 4 10:30AM–10:45AM PST
+### POSTMAN GALAXY: FEB 4, 2021 10:30AM–10:45AM PST
 
 We are pleased to announce that Eric Sheridan, Chief Scientist at WhiteHat Security, will be speaking at the upcoming "Postman Galaxy" conference. We will be delivering a presentation titled ["Partner Talk: Integrating API Security Testing into Postman Lifecycle"](https://www.postman.com/postman-galaxy/schedule/) wherein we will demonstrate API Security Testing from within Postman IDE and Newman. [Register now](https://www.postman.com/postman-galaxy/) and come join our talk.
+
+### POSTMAN HACKATHON: JAN 25, 2021
+
+We are pleased to announce the API Security Tester has been submitted to the [Postman Hackathon](https://www.postman.com/postman-galaxy/postman-api-hack/) as of January 25th.
