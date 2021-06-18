@@ -48,14 +48,18 @@ ID-DAST requires a license to perform security testing. [Click here](https://www
 Docker
 ID-DAST utilizes a Docker container to perform the vulnerability scanning. Running this container requires you to accept the End User License Agreement by setting the WHITEHAT_ACCEPT_EULA environment variable equal to y. Pull and Run the container with the accepted EULA option by executing the following commands:
 
-$> docker pull whsinnovations/dast-attacker-api:latest
-$> docker run -it --rm -p 27374:27374 -e WHITEHAT_ACCEPT_EULA=y whsinnovations/dast-attacker-api:latest
+`$> docker pull whsinnovations/dast-attacker-api:latest
+$> docker run -it --rm -p 27374:27374 -e WHITEHAT_ACCEPT_EULA=y whsinnovations/dast-attacker-api:latest`
+
+
 
 ### Import the Security Tester Collection
 There are two options for importing the WhiteHat Security Tester Collection:
-  1) Fork the collection directly from our public [WhiteHat Workspace](https://www.postman.com/whitehatsec-innovations/workspace/api-security-tester/overview) within the Postman IDE, however, you will need to enable a public profile.
-  2) Alternatively, download the Security Tester collection from this repo and import it into Postman.
+  1) Within the Postman IDE, fork the collection directly from our public [WhiteHat Workspace](https://www.postman.com/whitehatsec-innovations/workspace/api-security-tester/overview), however, you will need to enable a public profile.
+  2) Alternatively, you can download the Security Tester collection from this GitHub repo and import it into Postman.
   
+
+
 ## Past Events
 
 ### WEBINAR ON MAY 6, 2021: BLUEPRINT FOR GOVERNANCE: INTEGRATING SECURITY TESTING WITHIN POSTMAN
