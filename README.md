@@ -31,13 +31,11 @@ While technically we're supposed to say "we are the 'Innovation Team' within Whi
 You can report any and all issues you encounter using [Issues on GitHub](https://github.com/whitehatsec-innovations/dast-postman-resources/issues).
 
 ## Overview
-WhiteHat’s API Security Tester is a collection enabling you to automatically test your API's for security vulnerabilities directly within your Postman IDE using WhiteHat Security's Intelligence-Directed DAST (ID-DAST). ID-DAST tests for the OWASP Top 10 for APIs as well as the OWASP Top 10 for Web Applications.
+WhiteHat’s API Security Tester is a collection enabling you to automatically test your API's for security vulnerabilities directly within your Postman IDE using WhiteHat Security's Intelligence-Directed DAST (ID-DAST). ID-DAST tests for the OWASP Top 10 for APIs as well as the OWASP Top 10 for Web Applications. [Click here](https://youtu.be/k2GuK_mVboo) to watch a presentation and demonstration of how to use this collection in your Postman workspace.
 
 ### License
 ID-DAST requires a license to perform security testing. [Click here](https://www.whitehatsec.com/idd-lap-reg/) and complete the form to obtain a free tiral license.
 
-### Demo
-[Click here](https://youtu.be/k2GuK_mVboo) to watch a demonstration of how to use this workspace and collection.
 
 ### System requirements
   1) Postman IDE and Docker is installed and running
@@ -48,8 +46,8 @@ ID-DAST requires a license to perform security testing. [Click here](https://www
 Docker
 ID-DAST utilizes a Docker container to perform the vulnerability scanning. Running this container requires you to accept the End User License Agreement by setting the WHITEHAT_ACCEPT_EULA environment variable equal to y. Pull and Run the container with the accepted EULA option by executing the following commands:
 
-`$> docker pull whsinnovations/dast-attacker-api:latest
-$> docker run -it --rm -p 27374:27374 -e WHITEHAT_ACCEPT_EULA=y whsinnovations/dast-attacker-api:latest`
+`*$> docker pull whsinnovations/dast-attacker-api:latest
+*$> docker run -it --rm -p 27374:27374 -e WHITEHAT_ACCEPT_EULA=y whsinnovations/dast-attacker-api:latest`
 
 
 
