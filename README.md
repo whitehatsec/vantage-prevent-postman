@@ -18,24 +18,11 @@ So how does IDD accomplish this while not disrupting your continuous innovation?
 * It's Accurate! - Focus on accuracy is incredibly important in todays DevOps world. False positives are as important as false negatives as noise in scan results can slow down the entire process. That’s why "Evidence" is included with IDD's vulnerability results.
 * It's Easy! - No need to spend days with documentation or a product workshop. IDD is easy to use with no dependencies and minimal configuration. It also includes intelligence that automatically handles common challenges such as logins and complex session state.
 
-## Our People
-
-While technically we're supposed to say "we are the 'Innovation Team' within WhiteHat Security", in reality, we're consumers of APIs on a daily basis, whether we know it or not... just like you. We are a diverse team of folks that have come together with the mission of playing a small yet critical role of enabling the secure development of APIs so that we, as people, can have confidence in the security and privacy of our information as we continue to expand our personal consumption of APIs.
-
-## Related Projects
-
-* [newman-reporter-har](https://www.npmjs.com/package/newman-reporter-har) - free and open source software that integrates with Newman to generate HTTP Archive (HAR) reports from the execution of Collections. We developed and released this reporter to the Postman community as a part of our work on API Security Tester.
-
-## Reporting Issues
-
-You can report any and all issues you encounter using [Issues on GitHub](https://github.com/whitehatsec-innovations/dast-postman-resources/issues).
-
-## Overview
+# Product Overview
 WhiteHat’s API Security Tester is a collection enabling you to automatically test your API's for security vulnerabilities directly within your Postman IDE using WhiteHat Security's Intelligence-Directed DAST (ID-DAST). ID-DAST tests for the OWASP Top 10 for APIs as well as the OWASP Top 10 for Web Applications. [Click here](https://youtu.be/k2GuK_mVboo) to watch a presentation and demonstration of how to use this collection in your Postman workspace.
 
 ### License
 ID-DAST requires a license to perform security testing. [Click here](https://www.whitehatsec.com/idd-lap-reg/) and complete the form to obtain a free tiral license.
-
 
 ### System requirements
   1) Postman IDE and Docker is installed and running
@@ -55,7 +42,17 @@ There are two options for importing the WhiteHat Security Tester Collection:
   1) Within the Postman IDE, fork the collection directly from our public [WhiteHat Workspace](https://www.postman.com/whitehatsec-innovations/workspace/api-security-tester/overview), however, you will need to enable a public profile.
   2) Alternatively, you can download the Security Tester collection from this GitHub repo and import it into Postman.
   
+## Our People
 
+While technically we're supposed to say "we are the 'Innovation Team' within WhiteHat Security", in reality, we're consumers of APIs on a daily basis, whether we know it or not... just like you. We are a diverse team of folks that have come together with the mission of playing a small yet critical role of enabling the secure development of APIs so that we, as people, can have confidence in the security and privacy of our information as we continue to expand our personal consumption of APIs.
+
+## Related Projects
+
+* [newman-reporter-har](https://www.npmjs.com/package/newman-reporter-har) - free and open source software that integrates with Newman to generate HTTP Archive (HAR) reports from the execution of Collections. We developed and released this reporter to the Postman community as a part of our work on API Security Tester.
+
+## Reporting Issues
+
+You can report any and all issues you encounter using [Issues on GitHub](https://github.com/whitehatsec-innovations/dast-postman-resources/issues).
 
 ## Past Events
 
