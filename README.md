@@ -45,11 +45,10 @@ ID-DAST requires a license to perform security testing. [Click here](https://www
 ### Setup
 Docker
 ID-DAST utilizes a Docker container to perform the vulnerability scanning. Running this container requires you to accept the End User License Agreement by setting the WHITEHAT_ACCEPT_EULA environment variable equal to y. Pull and Run the container with the accepted EULA option by executing the following commands:
-
-`*$> docker pull whsinnovations/dast-attacker-api:latest
-*$> docker run -it --rm -p 27374:27374 -e WHITEHAT_ACCEPT_EULA=y whsinnovations/dast-attacker-api:latest`
-
-
+```
+$> docker pull whsinnovations/dast-attacker-api:latest
+$> docker run -it --rm -p 27374:27374 -e WHITEHAT_ACCEPT_EULA=y whsinnovations/dast-attacker-api:latest
+```
 
 ### Import the Security Tester Collection
 There are two options for importing the WhiteHat Security Tester Collection:
