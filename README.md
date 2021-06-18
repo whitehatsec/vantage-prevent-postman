@@ -36,15 +36,14 @@ ID-DAST utilizes a Docker container to perform the vulnerability scanning. Runni
 $> docker pull whsinnovations/dast-attacker-api:latest
 $> docker run -it --rm -p 27374:27374 -e WHITEHAT_ACCEPT_EULA=y whsinnovations/dast-attacker-api:latest
 ```
+Note: Windows users will need to enable support for Linux containers by following the [official documentation](https://docs.docker.com/docker-for-windows/wsl/).
 
 ### Import the Security Tester Collection
 There are two options for importing the WhiteHat Security Tester Collection:
-  1) Within the Postman IDE, fork the collection directly from our public [WhiteHat Workspace](https://www.postman.com/whitehatsec-innovations/workspace/api-security-tester/overview), however, you will need to enable a public profile.
+  1) Within Postman, fork the collection directly from our public [WhiteHat Workspace](https://www.postman.com/whitehatsec-innovations/workspace/api-security-tester/overview), however, you will need to enable a public profile.
   2) Alternatively, you can download the Security Tester collection from this GitHub repo and import it into Postman.
   
-## Our People
 
-While technically we're supposed to say "we are the 'Innovation Team' within WhiteHat Security", in reality, we're consumers of APIs on a daily basis, whether we know it or not... just like you. We are a diverse team of folks that have come together with the mission of playing a small yet critical role of enabling the secure development of APIs so that we, as people, can have confidence in the security and privacy of our information as we continue to expand our personal consumption of APIs.
 
 ## Related Projects
 
