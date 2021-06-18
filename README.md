@@ -30,11 +30,28 @@ While technically we're supposed to say "we are the 'Innovation Team' within Whi
 
 You can report any and all issues you encounter using [Issues on GitHub](https://github.com/whitehatsec-innovations/dast-postman-resources/issues).
 
+### Overview
+WhiteHat’s API Security Tester is a collection enabling you to automatically test your API's for security vulnerabilities directly within your Postman IDE using WhiteHat Security's Intelligence-Directed DAST (ID-DAST). ID-DAST tests for the OWASP Top 10 for APIs as well as the OWASP Top 10 for Web Applications.
+
+### License
+ID-DAST requires a license to perform security testing. Click here and complete the form to obtain a free tiral license.
+
+### Demo
+Click here to watch a demonstration of how to use this workspace and collection.
+
+### Setup
+Docker
+ID-DAST utilizes a Docker container to perform the vulnerability scanning. Running this container requires you to accept the End User License Agreement by setting the WHITEHAT_ACCEPT_EULA environment variable equal to y. Pull and Run the container with the accepted EULA option by executing the following commands:
+
+$> docker pull whsinnovations/dast-attacker-api:latest
+$> docker run -it --rm -p 27374:27374 -e WHITEHAT_ACCEPT_EULA=y whsinnovations/dast-attacker-api:latest
+
 ## Past Events
 
 ### WEBINAR ON MAY 6, 2021: BLUEPRINT FOR GOVERNANCE: INTEGRATING SECURITY TESTING WITHIN POSTMAN
 
 Join Eric Sheridan (Chief Scientist at WhiteHat Security) and Kin Lane (Chief Evangelist at Postman) in this live webinar on Thursday, May 6 and learn the “must-haves” of API security testing within your overall governance strategy. In addition, we will put theory into practice with a demonstration of how to achieve fast, easy, accurate and scalable security testing of your APIs. [Register today!](https://info.whitehatsec.com/0521-WebinarWH-IntegrateAPITestingPostman.html)
+
 
 ### POSTMAN GALAXY: FEB 4, 2021 10:30AM–10:45AM PST
 
