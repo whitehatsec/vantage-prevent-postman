@@ -30,7 +30,7 @@ While technically we're supposed to say "we are the 'Innovation Team' within Whi
 
 You can report any and all issues you encounter using [Issues on GitHub](https://github.com/whitehatsec-innovations/dast-postman-resources/issues).
 
-### Overview
+## Overview
 WhiteHat’s API Security Tester is a collection enabling you to automatically test your API's for security vulnerabilities directly within your Postman IDE using WhiteHat Security's Intelligence-Directed DAST (ID-DAST). ID-DAST tests for the OWASP Top 10 for APIs as well as the OWASP Top 10 for Web Applications.
 
 ### License
@@ -39,6 +39,11 @@ ID-DAST requires a license to perform security testing. [Click here](https://www
 ### Demo
 [Click here](https://youtu.be/k2GuK_mVboo) to watch a demonstration of how to use this workspace and collection.
 
+### System requirements
+  1) Postman IDE and Docker is installed and running
+  2) The API/application that you wish to test againist is live (e.g. JuiceShop or TiredfulAPI)
+  3) And you have the associated API collection you wish to test for security
+
 ### Setup
 Docker
 ID-DAST utilizes a Docker container to perform the vulnerability scanning. Running this container requires you to accept the End User License Agreement by setting the WHITEHAT_ACCEPT_EULA environment variable equal to y. Pull and Run the container with the accepted EULA option by executing the following commands:
@@ -46,6 +51,11 @@ ID-DAST utilizes a Docker container to perform the vulnerability scanning. Runni
 $> docker pull whsinnovations/dast-attacker-api:latest
 $> docker run -it --rm -p 27374:27374 -e WHITEHAT_ACCEPT_EULA=y whsinnovations/dast-attacker-api:latest
 
+### Import the Security Tester Collection
+There are two options for importing the WhiteHat Security Tester Collection:
+  1) Fork the collection directly from our public [WhiteHat Workspace](https://www.postman.com/whitehatsec-innovations/workspace/api-security-tester/overview) within the Postman IDE, however, you will need to enable a public profile.
+  2) Alternatively, download the Security Tester collection from this repo and import it into Postman.
+  
 ## Past Events
 
 ### WEBINAR ON MAY 6, 2021: BLUEPRINT FOR GOVERNANCE: INTEGRATING SECURITY TESTING WITHIN POSTMAN
